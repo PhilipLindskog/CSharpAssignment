@@ -15,9 +15,9 @@ public class ContactService(IContactRepository contactRepository) : IContactServ
     {
         try
         {
-            var contactModel = ContactFactory.Create();
+            
 
-            if (contactModel != null )
+            if (contact != null )
             {
                 contact.Id = IdGenerator.GenerateUniqueId();
 
