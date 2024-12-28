@@ -3,7 +3,7 @@ using System.Diagnostics;
 
 namespace Business.Services;
 
-internal class FileService : IFileService
+public class FileService : IFileService
 {
     private readonly string _directoryPath;
     private readonly string _filePath;

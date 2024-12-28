@@ -79,13 +79,49 @@ public class MenuDialog(IContactService contactService)
         Console.Write("Enter Home City: ");
         contact.City = Console.ReadLine()!;
 
-        _contactService.CreateContact(contact);
+        bool result = _contactService.CreateContact(contact);
+
+        if (result)
+        {
+            Console.WriteLine("");
+            Console.WriteLine("Contact was added successfully. Press any key to continue.");
+            Console.ReadKey();
+        }
+        else
+        {
+            Console.WriteLine("");
+            Console.WriteLine("Faild to add contact. Press any key to continue.");
+            Console.ReadKey();
+        }
     }
 
     public void ShowAllContacts()
     {
-        throw new NotImplementedException();
+        Console.Clear();
+        Console.WriteLine("---------- VIEW CONTACTS ----------");
+        var contacts = _contactService.GetContacts();
+
+        foreach (var contact in contacts)
+        {
+            Console.WriteLine("");
+            Console.WriteLine($" Id: {contact.Id}");
+            Console.WriteLine($" Name: {contact.FirstName} {contact.LastName}");
+            Console.WriteLine($" Email: {contact.Email}");
+            Console.WriteLine($" Phone number: {contact.Phone}");
+            Console.WriteLine($" Adress: {contact.Address} - {contact.Streetcode} - {contact.City}");
+            Console.WriteLine("-------------------------------------------------------------------");
+        }
+
+        if (!contacts.Any())
+        {
+            Console.WriteLine("No contacts found.");
+        }
+
+        Console.WriteLine("");
+        Console.WriteLine("Press any key to continue.");
+        Console.ReadKey();
     }
+
     public bool QuitApplication()
     {
         Console.Clear();
