@@ -106,10 +106,10 @@ public class MenuDialog(IContactService contactService)
             Console.WriteLine("");
             Console.WriteLine($" Id: {contact.Id}");
             Console.WriteLine($" Name: {contact.FirstName} {contact.LastName}");
-            Console.WriteLine($" Email: {contact.Email}");
+            Console.WriteLine($" E-mail: {contact.Email}");
             Console.WriteLine($" Phone number: {contact.Phone}");
             Console.WriteLine($" Adress: {contact.Address} - {contact.Streetcode} - {contact.City}");
-            Console.WriteLine("-------------------------------------------------------------------");
+            Console.WriteLine("-----------------------------------------------");
         }
 
         if (!contacts.Any())

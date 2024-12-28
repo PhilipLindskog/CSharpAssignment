@@ -12,8 +12,15 @@ public class ContactRepository(IFileService fileService) : IContactRepository
     public List<ContactModel> GetFromFile()
     {
         var json = _fileService.GetContentFromFile();
-        var list = JsonSerializer.Deserialize<List<ContactModel>>(json);
-        return list!;
+        if (json != null)
+        {
+            var list = JsonSerializer.Deserialize<List<ContactModel>>(json);
+            return list!;
+        }
+        else
+        {
+            return new List<ContactModel>();
+        }
     }
 
     public bool SaveToFile(List<ContactModel> list)
